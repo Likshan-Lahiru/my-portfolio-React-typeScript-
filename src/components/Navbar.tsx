@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Github, Twitter, Linkedin, Menu, X, Sun, Moon } from "lucide-react";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 
 interface NavbarProps {
   darkMode: boolean;
@@ -10,6 +10,15 @@ interface NavbarProps {
 export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
+  const navigate = useNavigate();
+
+  const handleNavigation = (item : any) => {
+    if (item === "Home") {
+      navigate("/");
+    } else {
+      navigate(`/${item.toLowerCase().replace(" ", "-")}`);
+    }
+  };
 
   return (
       <header className="sticky top-0 z-50 bg-white dark:bg-gray-900 shadow-sm dark:shadow-gray-800 transition-colors duration-300">
@@ -23,33 +32,35 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
               </a>
             </div>
             <div className="hidden md:flex items-center space-x-8">
-              {["Home", "About", "Tech Stack", "Projects", "Contact"].map((item) => (
-                  <Link
+              {["Home", "About", "TechStack", "Projects", "Contact"].map((item) => (
+                  <button
                       key={item}
-                      to={`/${item.toLowerCase().replace(" ", "-")}`}
+                      onClick={() => handleNavigation(item)}
                       className="text-gray-800 dark:text-gray-200 hover:text-blue-500 dark:hover:text-blue-400"
                   >
                     {item}
-                  </Link>
+                  </button>
               ))}
             </div>
             <div className="hidden md:flex items-center space-x-4">
-              <button onClick={toggleDarkMode} className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">
-                {darkMode ? <Sun size={22} /> : <Moon size={22} />}
+              <button onClick={toggleDarkMode} className="text-gray-700 dark:text-gray-300">
+                {darkMode ? <Sun size={20} /> : <Moon size={20} />}
               </button>
-              {[
-                { href: "https://github.com", Icon: Github },
-                { href: "https://twitter.com", Icon: Twitter },
-                { href: "https://linkedin.com", Icon: Linkedin },
-              ].map(({ href, Icon }) => (
-                  <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">
-                    <Icon size={20} />
+              {["https://github.com", "https://twitter.com", "https://linkedin.com"].map((link, index) => (
+                  <a
+                      key={index}
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+                  >
+                    {index === 0 ? <Github size={20} /> : index === 1 ? <Twitter size={20} /> : <Linkedin size={20} />}
                   </a>
               ))}
             </div>
             <div className="md:hidden flex items-center space-x-4">
               <button onClick={toggleDarkMode} className="text-gray-700 dark:text-gray-300">
-                {darkMode ? <Sun size={22} /> : <Moon size={22} />}
+                {darkMode ? <Sun size={24} /> : <Moon size={24} />}
               </button>
               <button onClick={toggleMenu} className="text-gray-700 dark:text-gray-300">
                 {isMenuOpen ? <X size={24} /> : <Menu size={24} />}
@@ -71,13 +82,15 @@ export const Navbar: React.FC<NavbarProps> = ({ darkMode, toggleDarkMode }) => {
                   ))}
                 </div>
                 <div className="flex space-x-4 pt-4 border-t border-gray-200 dark:border-gray-700">
-                  {[
-                    { href: "https://github.com", Icon: Github },
-                    { href: "https://twitter.com", Icon: Twitter },
-                    { href: "https://linkedin.com", Icon: Linkedin },
-                  ].map(({ href, Icon }) => (
-                      <a key={href} href={href} target="_blank" rel="noopener noreferrer" className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400">
-                        <Icon size={20} />
+                  {["https://github.com", "https://twitter.com", "https://linkedin.com"].map((link, index) => (
+                      <a
+                          key={index}
+                          href={link}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-gray-700 dark:text-gray-300 hover:text-blue-500 dark:hover:text-blue-400"
+                      >
+                        {index === 0 ? <Github size={20} /> : index === 1 ? <Twitter size={20} /> : <Linkedin size={20} />}
                       </a>
                   ))}
                 </div>

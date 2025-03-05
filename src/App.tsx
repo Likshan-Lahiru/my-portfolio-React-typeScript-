@@ -62,6 +62,8 @@ export function App() {
             <Navbar darkMode={darkMode} toggleDarkMode={toggleDarkMode} />
             <Routes>
               <Route path="/about" element={<AboutPage />} />
+              <Route path="/TechStack" element={<TechStack />} />
+              <Route path="/Projects" element={<Projects />} />
               <Route
                   path="/"
                   element={
