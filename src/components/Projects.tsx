@@ -55,18 +55,18 @@ export const Projects: React.FC = () => {
 
   }, {
     id: 5,
-    title: "Project Title",
+    title: "Chat Application",
     description: "This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content",
     image: "https://images.unsplash.com/photo-1634017839464-5c339ebe3cb4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1935&q=80",
-    technologies: ["HTML", "JavaScript", "SASS", "React"],
+    technologies: ["Java", "JavaSocket", "javaFx", ],
     liveLink: "#",
     codeLink: "#"
   }, {
     id: 6,
-    title: "Project Title",
+    title: "Figma Design",
     description: "This is sample project description random things are here in description This is sample project lorem ipsum generator for dummy content",
     image: "https://images.unsplash.com/photo-1611162617213-7d7a39e9b1d7?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1974&q=80",
-    technologies: ["HTML", "JavaScript", "SASS", "React"],
+    technologies: ["Figma"],
     liveLink: "#",
     codeLink: "#"
   }];
